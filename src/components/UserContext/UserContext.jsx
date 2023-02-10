@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 import useLS from '../../hooks/useLS';
 
 export const UserContext = createContext();
