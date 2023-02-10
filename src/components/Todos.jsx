@@ -1,8 +1,11 @@
 import { useState, useMemo } from 'react';
+import styled from 'styled-components';
+
+import useLS from 'hooks/useLS';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import TodoSelect from './TodoSelect';
-import useLS from 'hooks/useLS';
+import Navigation from './Navigation';
 
 export const TYPES_TODO = { done: 'DONE', undone: 'NOT_DONE', all: 'ALL' };
 
@@ -22,12 +25,6 @@ const Todos = () => {
     );
   };
 
-  // const sortedTodos = () => {
-  //   if (TYPES_TODO.all === type) return todos;
-  //   if (TYPES_TODO.done === type) return todos.filter(item => item.isDone);
-  //   if (TYPES_TODO.undone === type) return todos.filter(item => !item.isDone);
-  // };
-
   const cacheSortedTodos = useMemo(() => {
     if (TYPES_TODO.all === type) return todos;
     if (TYPES_TODO.done === type) return todos.filter(item => item.isDone);
@@ -39,12 +36,21 @@ const Todos = () => {
     console.log(e.target.value);
   };
   return (
-    <div>
+    <TodoBox>
+      <Navigation />
       <TodoForm onAddTodo={onAddTodo} />
       <TodoSelect changeType={changeType} />
-      <TodoList todos={cacheSortedTodos()} onCheck={onCheck} />
-    </div>
+      <TodoList todos={cacheSortedTodos} onCheck={onCheck} />
+    </TodoBox>
   );
 };
+
+const TodoBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+`;
 
 export default Todos;
