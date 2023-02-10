@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
+import styled from 'styled-components';
+import Button from 'react-bootstrap/Button';
 
 const TodoForm = ({ onAddTodo }) => {
   const [title, setTitle] = useState('');
@@ -29,7 +31,7 @@ const TodoForm = ({ onAddTodo }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <input
         ref={firstTodoRef}
         onChange={handleChange}
@@ -45,8 +47,22 @@ const TodoForm = ({ onAddTodo }) => {
         name="description"
         value={description}
       />
-      <button type="submit">Add Todo</button>
-    </form>
+      <Button type="submit" variant="primary">
+        Add Todo
+      </Button>
+    </Form>
   );
 };
+const Form = styled.form`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 20px;
+`;
+
 export default TodoForm;
