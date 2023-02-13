@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const TodoList = ({ todos, onCheck }) => {
   return (
     <ul>
@@ -10,6 +12,7 @@ const TodoList = ({ todos, onCheck }) => {
             checked={isDone}
             onChange={() => onCheck(id)}
           />
+          <Link to={`delete/${id}`}>Delete</Link>
         </li>
       ))}
     </ul>
