@@ -5,11 +5,12 @@ import { UserContext } from 'components/UserContext/UserContext';
 import styled from 'styled-components';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../services/firebase.config';
+import { Navigate } from 'react-router-dom';
 
 const provider = new GoogleAuthProvider();
 
 function AuthPage() {
-  const { setUser } = useContext(UserContext);
+  const { setUser, user } = useContext(UserContext);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -22,6 +23,10 @@ function AuthPage() {
       setUser(user);
     } catch (error) {}
   };
+
+  if (user) {
+    return <Navigate to="/todo" replace />;
+  }
 
   return (
     <Container>

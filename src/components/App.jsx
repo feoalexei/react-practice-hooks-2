@@ -1,12 +1,16 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import Todos from './Todos';
-import AuthPage from './AuthPage/AuthPage';
+import AuthPage from '../pages/AuthPage/AuthPage';
 import { UserContext } from './UserContext/UserContext';
+import Router from './Router/Router';
 
 export const App = () => {
-  const { user } = useContext(UserContext);
-  return <Container>{!user ? <AuthPage /> : <Todos />}</Container>;
+  return (
+    <Container>
+      <Router />
+    </Container>
+  );
 };
 
 const Container = styled.div`

@@ -1,12 +1,18 @@
 import { useRef, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
+import useLS from 'hooks/useLS';
 
 const TodoForm = ({ onAddTodo }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const firstTodoRef = useRef(null);
+  const [todos, setTodos] = useLS('KeyTodos', []);
+
+  const location = useLocation();
+  console.log(location);
 
   useEffect(() => {
     firstTodoRef.current.focus();
@@ -22,7 +28,7 @@ const TodoForm = ({ onAddTodo }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const todo = { id: nanoid(10), title, description, isDone: false };
-    onAddTodo(todo);
+    setTodos([...todos, todo]);
     handleReset();
   };
 

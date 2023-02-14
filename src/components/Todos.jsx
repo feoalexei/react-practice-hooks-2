@@ -6,6 +6,7 @@ import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import TodoSelect from './TodoSelect';
 import Navigation from './Navigation';
+import { Link, Outlet } from 'react-router-dom';
 
 export const TYPES_TODO = { done: 'DONE', undone: 'NOT_DONE', all: 'ALL' };
 
@@ -38,7 +39,11 @@ const Todos = () => {
   return (
     <TodoBox>
       <Navigation />
-      <TodoForm onAddTodo={onAddTodo} />
+      {/* <TodoForm onAddTodo={onAddTodo} /> */}
+      <Link to="add" state={{ a: onAddTodo }}>
+        Add Todo Form
+      </Link>
+      <Outlet />
       <TodoSelect changeType={changeType} />
       <TodoList todos={cacheSortedTodos} onCheck={onCheck} />
     </TodoBox>
