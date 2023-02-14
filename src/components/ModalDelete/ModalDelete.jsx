@@ -1,7 +1,6 @@
 import useLS from 'hooks/useLS';
 import { Button } from 'react-bootstrap';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 
 const ModalDelete = () => {
   const { id } = useParams();
@@ -17,22 +16,18 @@ const ModalDelete = () => {
   };
 
   return (
-    <Modal>
-      <p>Do you want to delete?</p>
-      <Button className="me-2" onClick={handleDelete}>
-        Delete
-      </Button>
-      <Link to="/todo">
-        <Button>Cancel</Button>
-      </Link>
-    </Modal>
+    <div className="border border-secondary rounded-2 p-4">
+      <p>Do you really want to delete the task?</p>
+      <div className="d-flex justify-content-center">
+        <Button className="me-2 btn-danger" onClick={handleDelete}>
+          Delete
+        </Button>
+        <Link to="/todo">
+          <Button>Cancel</Button>
+        </Link>
+      </div>
+    </div>
   );
 };
 
-const Modal = styled.div`
-  width: 200px;
-  height: 200px;
-  background-color: lightgrey;
-  padding: 20px;
-`;
 export default ModalDelete;
