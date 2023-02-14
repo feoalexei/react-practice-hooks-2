@@ -4,7 +4,6 @@ import { nanoid } from 'nanoid';
 import { database } from '../../services/firebase.config';
 import { UserContext } from 'components/UserContext/UserContext';
 import { FaUserCircle } from 'react-icons/fa';
-import styled from 'styled-components';
 
 const Chat = () => {
   const { user } = useContext(UserContext);

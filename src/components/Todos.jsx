@@ -2,7 +2,6 @@ import { useState, useMemo } from 'react';
 import styled from 'styled-components';
 
 import useLS from 'hooks/useLS';
-import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import TodoSelect from './TodoSelect';
 import Navigation from './Navigation';
