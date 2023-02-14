@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import Todos from 'components/Todos';
 import { UserContext } from 'components/UserContext/UserContext';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const Todo = () => {
   const { user } = useContext(UserContext);

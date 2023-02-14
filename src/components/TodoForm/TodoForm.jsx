@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
 import useLS from 'hooks/useLS';
 
-const TodoForm = ({ onAddTodo }) => {
+const TodoForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const firstTodoRef = useRef(null);
